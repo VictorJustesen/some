@@ -1,0 +1,38 @@
+
+// White Mode
+$wbg: #FFFFFF;     // Main background color
+$wtp: #333333;     // Primary text color
+$wts: #888888;     // Secondary text color (e.g., timestamps, auxiliary information)
+$wlink: #007BFF;   // Link and highlight color
+$wcbg: #F8F8F8;    // Background color for code blocks or areas needing contrast
+$wct: #2A2A2A;     // Text color for code 
+$wnavbar: #F2F2F2; // Navbar or header background color
+
+// Dark Mode
+$dbg: #1E1E1E;     // Main background color
+$dtp: #E5E5E5;     // Primary text color
+$dts: #B0B0B0;     // Secondary text color (e.g., timestamps, auxiliary information)
+$dlink: #009AFF;   // Link and highlight color
+$dcbg: #2A2A2A;    // Background color for code blocks or areas needing contrast
+$dct: #E0E0E0;     // Text color for code
+$dnavbar: #252525; // Navbar or header background color
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  
+ // Define color variables for better maintainability
+
+
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

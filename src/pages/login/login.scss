@@ -1,0 +1,112 @@
+@use '../../index.scss' as *;
+
+.container {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.042);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 75%;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+
+
+.left {
+    flex: 1;
+    background-color: lightgrey;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    h1 {
+        align-self: center;
+        line-height: 0px;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $wts;
+    }
+    button {
+        width: 50%;
+        cursor: pointer;
+        padding: 10px;
+        font-weight: bold;
+        color: black;
+        background-color: #fff;
+        border: none;
+        align-self: center;
+    }
+    .register {
+        margin-bottom: 30px;
+    }
+    .guest {
+        margin-bottom: 0;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        input {
+            border: none;
+            color: black;
+            border-bottom: 1px solid black;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: rgba(117, 117, 255, 0);
+        }
+    }
+}
+
+.right {
+    flex: 1;
+    background-color: #fff;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    align-self: flex-start;
+    h1 {
+        align-self: flex-start;
+        line-height: 0px;
+        margin-bottom: 30px;
+    }
+    button {
+        width: 50%;
+        cursor: pointer;
+        padding: 10px;
+        font-weight: bold;
+        color: white;
+        background-color: #000;
+        border: none;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        input {
+            border: none;
+            color: black;
+            border-bottom: 1px solid black;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: rgba(117, 117, 255, 0);
+        }
+    }
+}}
+
+.login {
+    @extend .container;
+}
+
+.registerForm {
+    @extend .container;
+    
+    z-index: 3;
+}
