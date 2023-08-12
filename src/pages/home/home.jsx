@@ -1,11 +1,14 @@
 
 
 import "./home.scss"
-
-const home = () => {
+import Posts from "../../components/posts/Posts"
+const Home = () => {
   return (
-    <div>home</div>
+<p className="Home">
+    <Posts/>
+</p>
+
   )
 }
 
-export default home
+export default Home

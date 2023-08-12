@@ -1,0 +1,14 @@
+@import '../../style.scss';
+.posts{
+@include themify($themes){
+.post{
+    
+    margin: 10px;
+    background-color: themed("bg");
+    border-radius: 10px;
+    padding: 10px;
+    @include boxshadow;
+    margin-bottom: 40px;
+}
+}
+}

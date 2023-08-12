@@ -1,0 +1,76 @@
+
+@import '../../style.scss';
+.post{
+    @include themify($themes){
+    .head{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .user{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            
+            img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+            
+            }
+
+            .userinfo{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                text-decoration: none;
+                .name{
+                    color: themed("tp");
+                    text-decoration: none;
+                    font-weight: 500;
+                }
+
+                .timeago{
+                    text-decoration: none;
+                    color: themed("ts");
+                    font-size: small;
+                }
+            }
+        }
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+         
+        p{
+           margin-bottom: 20px;
+        }
+        img{
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+    }
+    .buttom {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;  // Add this line to evenly space the children
+    
+        .item {
+            gap: 5px;
+            display: flex;
+            align-items: center;
+            flex: 1;  
+            justify-content: center; 
+            border-radius: 4px;
+        }
+        .item:hover{
+            flex-basis: 1 1 0px;
+            background-color: themed("obg");
+        }
+    }
+    
+}
+}

@@ -1,0 +1,33 @@
+@import '../../style.scss';
+
+.leftbar{
+    @include themify($themes){
+
+    position: sticky;
+        top: 70px;
+        height:calc(100vh - 70px);
+        background-color: themed("bg");
+       
+    .container{
+        display: flex;
+        align-items: flex-start;
+        
+        .menu{
+            padding: 25px 10px;
+            color: themed("tp");
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+           border-bottom: 1px solid lightgrey;
+            .user{
+                
+                @include userStyles;}
+
+                div{
+                    display: flex;
+                align-items: center;
+                gap: 5px;
+                }
+        }
+    }
+}}

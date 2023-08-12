@@ -1,0 +1,7 @@
+@import "../../style.scss";
+.Home{
+    @include themify($themes){
+    background-color: themed("obg");
+    color: themed("tp");
+    margin-top: 0 ;
+}}

@@ -2,10 +2,11 @@
 
 .container {
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.042);
+    background-color: rgba(0, 0, 0, 0.000);
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .card {
@@ -13,8 +14,14 @@
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
+    // Set display as flex to allow children to dictate the height
     display: flex;
+    
 
+    .login,.register{
+        width: 100%;
+display: flex;
+    flex-direction: row;
 
 .left {
     flex: 1;
@@ -30,7 +37,7 @@
         margin-bottom: 30px;
     }
     p {
-        color: $wts;
+       //color: $wts;
     }
     button {
         width: 50%;
@@ -41,6 +48,7 @@
         background-color: #fff;
         border: none;
         align-self: center;
+        font-size: 15px;
     }
     .register {
         margin-bottom: 30px;
@@ -67,11 +75,13 @@
     flex: 1;
     background-color: #fff;
     padding: 50px;
+   
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
     align-self: flex-start;
+    gap: 5px;
+    
     h1 {
         align-self: flex-start;
         line-height: 0px;
@@ -84,6 +94,7 @@
         font-weight: bold;
         color: white;
         background-color: #000;
+        font-size: 15px;
         border: none;
     }
     form {
@@ -99,14 +110,21 @@
             background-color: rgba(117, 117, 255, 0);
         }
     }
-}}
+}}}
 
-.login {
-    @extend .container;
+
+
+.register{
+   
+    .right{
+        h1{align-self: center !important;}
+        span{margin-top: 30px;}
+        button{
+            margin-top:10px;
+            align-self: center ;
+        }
+    }
 }
 
-.registerForm {
-    @extend .container;
-    
-    z-index: 3;
-}
+
+

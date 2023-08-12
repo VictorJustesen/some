@@ -1,0 +1,46 @@
+@import '../../style.scss';
+.rightbar{
+    @include themify($themes){
+    position: sticky;
+        top: 70px;
+        height:calc(100vh - 70px);
+        flex: 3;
+        background-color: themed("obg");
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 30px 10px;
+        gap:15px;
+        .menu{
+            background-color: themed("bg");
+            color: themed("tp");
+            border-radius: 10px;
+            padding: 10px;
+            @include boxshadow;
+            flex: column;
+           width: 90%;
+
+            .point{
+                
+                align-items: center;
+                justify-content: space-between;
+                display: flex;
+                gap:10px;
+                span{
+                    color:themed("ts");
+                    font-size: 0.8rem;
+                }
+                .user{
+                    @include userStyles;
+                }
+                .buttons{
+                    display: flex;
+                    gap: 5px;
+                }
+            }
+        }
+       
+    }
+}}
