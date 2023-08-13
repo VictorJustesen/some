@@ -5,7 +5,7 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
-height: 50px;
+height: 49px;
 padding: 10px 20px;
 border-bottom: 1px solid grey;
 position: sticky;
@@ -22,8 +22,20 @@ gap: 20px;
             display: flex;
             align-items: center;
             border: 1px solid themed("obg");
-            input[type="text"], textarea {
+            margin-right: 10px;
 
+           
+
+            @media(max-width:750px){
+                width:22px;
+                border: none;
+                
+            }
+
+            input[type="text"], textarea {
+                @media(max-width:750px){
+                    display: none;
+                }
                border: none;
                 background-color: themed("bg");
                 color: themed("tp");
@@ -38,12 +50,17 @@ gap: 20px;
     }
 
     .right{
+        @include mobile{
+                    display: none;
+                }
         display: flex;
 align-items: center;
 gap: 20px;
 
         .user{
             @include userStyles;
+            
+            span{display: none;}
         }
     }
 }}

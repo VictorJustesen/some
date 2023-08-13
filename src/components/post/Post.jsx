@@ -37,18 +37,18 @@ const Post = ({post}) => {
     
     </div>
     <div className="buttom">
-    <div className='item'>
+   
         {
       liked 
-      ? <FavoriteOutlinedIcon onClick={() => setLiked(false)} /> 
-      : <FavoriteBorderOutlinedIcon onClick={() => setLiked(true)} />
+      ? <div className='item'  onClick={() => setLiked(false)}><FavoriteOutlinedIcon /><span>Likes</span></div> 
+      : <div className='item'  onClick={() => setLiked(true)}><FavoriteBorderOutlinedIcon  /><span>Likes</span></div>
     }
     
        
-            <span>Likes</span>
-    </div >
-       <div className='item'>
-            <TextsmsOutlinedIcon onClick={() => setCommentOpen(!commentOpen)} />
+         
+   
+       <div className='item' onClick={() => setCommentOpen(!commentOpen)}>
+            <TextsmsOutlinedIcon  />
        
         
             <span>Comments</span>

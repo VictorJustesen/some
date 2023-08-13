@@ -1,6 +1,13 @@
 @import '../../style.scss';
 .rightbar{
     @include themify($themes){
+        @include mobile{
+            display: none;
+        }
+
+        @include tablet{
+            display: none;
+        }
     position: sticky;
         top: 70px;
         height:calc(100vh - 70px);

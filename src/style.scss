@@ -68,3 +68,15 @@ ct: #E0E0E0,     // Text color for code
   @mixin boxshadow{
     box-shadow: 0px 0px 15px 1px themed("cbg");
   }
+
+  @mixin mobile{
+    @media(max-width: 480px){
+        @content;
+    } 
+  }
+
+  @mixin tablet{
+    @media(max-width: 960px){
+        @content;
+    } 
+  }

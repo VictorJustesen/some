@@ -2,6 +2,7 @@
 @import '../../style.scss';
 .post{
     @include themify($themes){
+       
     .head{
         display: flex;
         justify-content: space-between;
@@ -42,7 +43,7 @@
     .content{
         display: flex;
         flex-direction: column;
-         
+        text-align: left;
         p{
            margin-bottom: 20px;
         }

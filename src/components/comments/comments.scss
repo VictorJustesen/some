@@ -2,33 +2,60 @@
 
 .comments{
 @include themify($themes){
+    margin-top: 10px;
     img{width: 40px;
     height: 40px;
 border-radius: 50%;
 object-fit: cover;}
 
+.write{
+    display: flex;
+    gap: 20px;
+   
+
+    input[type="text"], textarea {
+        width: 100%;
+        border: 1px solid themed("obg");
+        padding: 5px;
+         background-color: themed("bg");
+         color: themed("tp");}
+        
+         input[type="text"], textarea:focus{
+            outline: none;
+          }  
+
+    button{
+        min-width: 70px;
+    }
+}
+
 .comment{margin: 30px 0px;
 display: flex;
 justify-content: space-between;
 align-items: center;
+gap:20px;
 
 .info{
     display:flex;
-    flex-direction: flex;
-    gap:3px;
+    flex-direction: column;
+   flex: 5;
     align-items: flex-start;
-    align-items: center;
-    gap: 3px;
+   gap:3px;
+  
 
 span{
 font-weight: 500;
 }
 p{
-    color:themed("tp")
+    color:themed("tp");
+    margin:0;
+    align-self: self-start;
+    text-align: left;
 }
 }}
 .timeago{
-
+font-size: smaller;
+color:themed("ts")
 }
 
 

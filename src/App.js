@@ -31,7 +31,7 @@ const {darkMode} =useContext(DarkModeContext)
         <Navbar/>
         <div style={{display:"flex" }}>
           <Leftbar/>
-         <div style={{flex:6}}>
+         <div style={{flex:6, marginTop:-10}}>
             <Outlet/>
          </div>
             <RightBar/>
