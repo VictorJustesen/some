@@ -1,6 +1,8 @@
 import React, { useContext,useEffect, useRef,useState } from 'react';
 import "./login.scss"
 import { AuthContext } from '../../context/authContext';
+import axios from "axios"
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
 
 
@@ -8,6 +10,25 @@ const Login = () => {
 
   const canvasRef = useRef(null);
   const [showRegister, setShowRegister] = useState(false);
+  const [registerInputs,setRegisterInputs] = useState({
+    username:"",
+    email:"",
+    password:"",
+    name:"",
+  });
+
+const [registerError,setRegisterError] = useState(false)
+
+
+const [loginInputs,setLoginInputs] = useState({
+    username:"",
+    password:"",
+  });
+
+const [loginError,setLoginError] = useState(false)
+
+const navigate=useNavigate()
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -68,9 +89,39 @@ const Login = () => {
     };
 }, []);
 
-const handleLogin = () => {
-  login();
+const handleLoginChange= e => {
+    setLoginInputs((prev)=> ({...prev, [e.target.name]: e.target.value}));
+  };
+
+const handleLogin = async (e) => {
+e.preventDefault();
+    try{
+  await login(loginInputs);
+  navigate("/")
+    }
+    catch(err){
+setLoginError(err.response.data)
+}
 };
+
+const handleRegisterChange= e => {
+    setRegisterInputs((prev)=> ({...prev, [e.target.name]: e.target.value}));
+  };
+
+
+
+  const handleSignUp = async e => {
+    e.preventDefault()
+        try{
+await axios.post("http://localhost:8800/api/auth/register", registerInputs)
+
+        }
+        catch(err){
+            console.error(err)
+setRegisterError(err.response.data)
+        }
+    
+  };
 
   return (
     <div className='container'>
@@ -89,22 +140,29 @@ const handleLogin = () => {
                         <div className="right">
                             <h1>Login</h1>
                             <form>
-                                <input type="text" placeholder="username" />
-                                <input type="password" placeholder="password" />
+                                <input type="text" placeholder="username" name='username' onChange={handleLoginChange} />
+                                <input type="password" placeholder="password" name='password' onChange={handleLoginChange} />
+
+                                {loginError && loginError}
                                 <button className="login-btn" onClick={handleLogin}>Login</button>
                             </form>
                         </div>
                     </div>
                 ) : (
                     // Register content
+                 /*<input type="password" placeholder="confirm password" name="username" onChange={handleRegisterChange}/>*/
+
                     <div className="register">
                         <div className="left">
                         <h1>Register</h1>
+                        
                  <form>
-                   <input type="text" placeholder="username" />
-                   <input type="password" placeholder="password" />
-                   <input type="password" placeholder="confirm password" />
-                   <button>Sign Up</button>
+                   <input type="text" placeholder="username" name="username" onChange={handleRegisterChange}/>
+                   <input type="email" placeholder="password"name="email" onChange={handleRegisterChange}/>
+                   <input type="password" placeholder="confirm password" name="password" onChange={handleRegisterChange}/>
+                   <input type="text" placeholder="confirm password" name="name" onChange={handleRegisterChange}/>
+{registerError && registerError}
+                   <button onClick={handleSignUp}>Sign Up</button>
                  </form> 
                         </div>
                         <div className="right">
