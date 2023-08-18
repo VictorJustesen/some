@@ -5,7 +5,7 @@ const RightBar = () => {
     <div className='rightbar'>
 <div className="container">
     <div className=' menu suggestions'>
-        <span>suggestions for you</span>
+        <span >suggestions for you</span>
         
         <div className='point suggestion'>
         <div className='user' >
@@ -13,8 +13,8 @@ const RightBar = () => {
                     <span > person name</span>
                 </div>
                 <div className='buttons'>
-                    <button>follow</button>
-                    <button>dismiss</button>
+                    <button className='follow'>Follow</button>
+                    <button>Dismiss</button>
         </div>
 
             

@@ -2,11 +2,13 @@
 
 import "./home.scss"
 import Posts from "../../components/posts/Posts"
+import Share from "../../components/share/Share"
 const Home = () => {
   return (
-<p className="Home">
-    <Posts/>
-</p>
+<div className="Home">
+<Share/>
+<Posts/>
+</div>
 
   )
 }

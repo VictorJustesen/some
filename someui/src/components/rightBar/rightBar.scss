@@ -28,23 +28,57 @@
             @include boxshadow;
             flex: column;
            width: 90%;
+           
 
             .point{
-                
+                margin-top: 10px;
                 align-items: center;
                 justify-content: space-between;
                 display: flex;
                 gap:10px;
                 span{
                     color:themed("ts");
-                    font-size: 0.8rem;
+                    font-size: 13px;
                 }
-                .user{
-                    @include userStyles;
-                }
+                
+                    @include userHorizontal;
+                
+
+               
                 .buttons{
+                    margin-left: -5px !important;
                     display: flex;
-                    gap: 5px;
+                    gap: 10px;
+                    margin-right: 5px;
+                    button{
+                        width:50px;
+
+                        padding: 4px 6px;
+                        font-size:13px;
+                        border-radius: 5px;
+                        background-color: themed("bg");
+                        color: themed("tp");
+                        border: none;
+                        cursor: pointer;
+
+
+                    }
+
+                    button:hover{
+                        color:themed("reverse");
+                        font-weight: 500;
+                    }
+
+                    .follow{
+                        background-color: themed("tp");
+                        color: themed("bg");
+                    }
+
+                    .follow:hover{
+                        background-color: themed("reverse");
+                        color: themed("main");
+                        @include boxshadow;
+                    }
                 }
             }
         }

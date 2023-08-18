@@ -24,11 +24,11 @@ const [desc,setDesc] =useState("description description description description 
     <div className="profilecontainer">
       <div className="profileinfo">
         <div className="left">
-          <a href="" ><InstagramIcon fontSize="large"/></a>
-          <a href=""><PinterestIcon fontSize="large"/></a>
-          <a href=""><TwitterIcon fontSize="large"/></a>
-          <a href=""><FacebookTwotTneIcon fontSize="large"/></a>
-          <a href=""><LinkedInIcon fontSize="large"/></a>
+          <a href="" ><InstagramIcon className="icon"/></a>
+          <a href=""><PinterestIcon  className="icon"/></a>
+          <a href=""><TwitterIcon  className="icon"/></a>
+          <a href=""><FacebookTwotTneIcon  className="icon"/></a>
+          <a href=""><LinkedInIcon  className="icon"/></a>
           
         </div>
         <div className="middle">
@@ -38,18 +38,18 @@ const [desc,setDesc] =useState("description description description description 
           </div >
        <div className="buttom">
           <div >
-            <a href=""><PlaceIcon fontSize="large"/></a>
+            <a href=""><PlaceIcon  className="icon"/></a>
             <span>Place</span>
           </div>
           <div > 
-            <a href=""><LanguageIcon fontSize="large"/></a>
+            <a href=""><LanguageIcon  className="icon"/></a>
             <span>website</span>
           </div>
        </div>
         </div>
         <div className="right">
-        <a href=""><EmailOutlinedIcon fontSize="large"/></a>
-        <a href=""><MoreVertIcon fontSize="large"/></a>
+        <a href=""><EmailOutlinedIcon  className="icon"/></a>
+        <a href=""><MoreVertIcon  className="icon"/></a>
 
         </div>
       </div>

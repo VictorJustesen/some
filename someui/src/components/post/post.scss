@@ -1,77 +1,103 @@
-
 @import '../../style.scss';
-.post{
-    @include themify($themes){
-       
-    .head{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
 
-        .user{
+.post {
+    @include themify($themes) {
+
+        .head {
             display: flex;
-            gap: 10px;
+            justify-content: space-between;
             align-items: center;
-            
-            img {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-            
+
+            .suggestion {
+                margin-top: 10px;
             }
 
-            .userinfo{
+            .user {
                 display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                text-decoration: none;
-                .name{
-                    color: themed("tp");
-                    text-decoration: none;
-                    font-weight: 500;
+                gap: 10px;
+                align-items: center;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
                 }
 
-                .timeago{
+                .userinfo {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
                     text-decoration: none;
-                    color: themed("ts");
-                    font-size: small;
+
+                    .name {
+                        font-weight: bold;
+                        color: themed("tp");
+                        font-size: 1rem;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+
+                    .timeago {
+                        text-decoration: none;
+                        color: themed("ts");
+                        font-size: small;
+                    }
+                }
+
+                &:hover {
+                    .name {
+                        text-shadow: 0px 0px 0.5px black;
+                        color: themed("reverse");
+                    }
+
+                    .timeago {
+                        color: themed("ct");
+                    }
                 }
             }
         }
-    }
 
-    .content{
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        p{
-           margin-bottom: 20px;
+        .content {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+
+            p {
+                margin-bottom: 20px;
+            }
+
+            img {
+                width: 100%;
+                max-height: 500px;
+                object-fit: cover;
+            }
         }
-        img{
-            width: 100%;
-            max-height: 500px;
-            object-fit: cover;
-        }
-    }
-    .buttom {
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;  // Add this line to evenly space the children
-    
-        .item {
-            gap: 5px;
+
+        .buttom {
+            margin-top: 10px;
             display: flex;
             align-items: center;
-            flex: 1;  
-            justify-content: center; 
-            border-radius: 4px;
-        }
-        .item:hover{
-            flex-basis: 1 1 0px;
-            background-color: themed("obg");
+            justify-content: space-between;
+            gap: 5px;
+            .item {
+                gap: 5px;
+                display: flex;
+                align-items: center;
+                flex: 1;
+                justify-content: center;
+                border-radius: 4px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                flex-basis: 1 1 0px;
+                transition: background-color 0.1s ease-out;
+            }
+
+            .item:hover {
+                background-color: themed("obg");
+                transition-duration: 0s;
+                cursor: pointer;
+            }
         }
     }
-    
-}
 }

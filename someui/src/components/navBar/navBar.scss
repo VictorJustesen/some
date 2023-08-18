@@ -12,18 +12,42 @@ position: sticky;
 top: 0;
 background-color: themed("bg");
 color: themed("tp");
+
+.icon{
+    background-color: themed("obg");
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+.icon:hover{
+color:themed("reverse");
+background-color: themed("cbg");
+
+}
     .left{
         display: flex;
 align-items: center;
 gap: 20px;
-        span{color: blue;}
+Link {
+    width: 100px;
+    color: themed("reverse");
+    text-decoration: none;
+
+    &:hover {
+        font-weight: bold;
+    }
+}
         .search{
+            border-radius: 5px;
             width: 300px;
             display: flex;
             align-items: center;
             border: 1px solid themed("obg");
             margin-right: 10px;
-
+            height: 30px;
+            padding: 1px;
            
 
             @media(max-width:750px){
@@ -33,8 +57,10 @@ gap: 20px;
             }
 
             input[type="text"], textarea {
+                font-size:15px;
                 @media(max-width:750px){
                     display: none;
+                    
                 }
                border: none;
                 background-color: themed("bg");
@@ -50,6 +76,8 @@ gap: 20px;
     }
 
     .right{
+
+                
         @include mobile{
                     display: none;
                 }
@@ -57,10 +85,12 @@ gap: 20px;
 align-items: center;
 gap: 20px;
 
-        .user{
-            @include userStyles;
-            
-            span{display: none;}
-        }
+@include userHorizontal;
+.user{
+    img{
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
     }
 }}

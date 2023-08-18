@@ -3,13 +3,14 @@
 @include themify($themes){
     
 .post{
-    margin-top: 10px;
-    margin: 10px;
+    
+    margin: 20px 10px;
     background-color: themed("bg");
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 15px;
+    padding-bottom: 5px !important; 
     @include boxshadow;
-    margin-bottom: 30px;
+    
 }
 }
 }

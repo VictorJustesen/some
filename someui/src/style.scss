@@ -7,6 +7,8 @@ ts: #888888,     // Secondary text color (e.g., timestamps, auxiliary informatio
 link: #007BFF,   // Link and highlight color
 cbg: #bdbcbc,    // Background color for code blocks or areas needing contrast and lighter grey 
 ct: #2A2A2A,     // Text color for code 
+reverse:black,
+main:white
   ),
   dark:(
 // Dark Mode
@@ -16,7 +18,9 @@ tp: #E5E5E5,     // Primary text color and reverse
 ts: #B0B0B0,     // Secondary text color (e.g., timestamps, auxiliary information)
 link: #009AFF,   // Link and highlight color
 cbg: #575656,    // Background color for code blocks or areas needing contrast and lighter grey 
-ct: #E0E0E0,     // Text color for code
+ct: #E0E0E0,  // Text color for code
+reverse:white,
+main:black   
 ));
 
 
@@ -46,10 +50,12 @@ ct: #E0E0E0,     // Text color for code
     }
 
 
-@mixin userStyles {
+@mixin userHorizontal {
+.user{
     display: flex;
               align-items: center;
               gap: 10px;
+              cursor: pointer;
     img {
         width: 30px;
         height: 30px;
@@ -62,11 +68,27 @@ ct: #E0E0E0,     // Text color for code
         font-size: 1rem;
         white-space: nowrap;
     overflow: hidden;
+    transition: background-color 0.1s ease-out;
     }
   }
+   
+  
+  .user:hover{
+    span{
+      color:themed("reverse");
+      transition-duration: 0s;
+      font-weight: bolder;
+      
+    }
+  }
+  }
+
+ 
 
   @mixin boxshadow{
-    box-shadow: 0px 0px 15px 1px themed("cbg");
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
   }
 
   @mixin mobile{

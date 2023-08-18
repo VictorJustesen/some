@@ -16,8 +16,9 @@ const Post = ({post}) => {
     <div className='post'>
       <div className="head">
     <div className="user">
+    <Link to={`/profile/${post.userId}`}>
     <img src={`${post.img}`} alt="picture" />
-        
+        </Link>
         
             <Link className="userinfo" to={`/profile/${post.userId}`}>
             <span className='name'>{post.name}</span>
@@ -32,7 +33,7 @@ const Post = ({post}) => {
 
 
     <div className="content">
-        <p>{post.desc}</p>
+    <p>{post.desc}</p>
         <img src={`${post.img}`} alt="picture" />
     
     </div>
@@ -63,6 +64,6 @@ const Post = ({post}) => {
     {commentOpen && <Comments/>}
     </div>
   )
-}
+  }
 
 export default Post

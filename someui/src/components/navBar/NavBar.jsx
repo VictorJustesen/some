@@ -24,27 +24,31 @@ const NavBar = () => {
   return (
     <div className='navbar'>
 <div className="left">
-<Link to="/" style={{textDecoration:"none"}}>
-<span>DevConnect</span>
+<Link to="/" className="yourClassNameHere" style={{textDecoration:"none"}}>
+    DevConnect
 </Link>
-<HomeOutlinedIcon/>
-{darkMode ? <DarkModeOutlinedIcon onClick={toggle}/> : <WbSunnyOutlinedIcon onClick={toggle}/>}
-<GridViewIcon/>
+<HomeOutlinedIcon className='icon'/>
+{darkMode ? <DarkModeOutlinedIcon className='icon' onClick={toggle}/> : <WbSunnyOutlinedIcon className='icon' onClick={toggle}/>}
+<GridViewIcon className='icon'/>
 <div className='search'>
-  <SearchOutlinedIcon/>
+  <SearchOutlinedIcon />
   <input type="text" placeholder='Search' />
 </div>
 </div>
 
 <div className="right">
 
-<EmailOutlinedIcon/>
-<NotificationsOutlinedIcon/>
+<EmailOutlinedIcon className='icon'/>
+<NotificationsOutlinedIcon className='icon'/>
+
+<Link to={`/profile/${currentUser.userId}`} style={{textDecoration: 'none'}}>
+
 <div className='user'>
- 
   <img src={currentUser.profilepic} alt="picture" className='userpic' />
   <span>{currentUser.name}</span>
-</div>
+  </div>
+  </Link>
+
 </div>
 
     </div>
