@@ -15,7 +15,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 150px;
+     height: auto;
      
       .top {
         display: flex;
@@ -25,22 +25,23 @@
         
         width: 100%;
         border-bottom: 1px solid themed("cbg");
-
+        padding-bottom: 5px;
         
         .left {
+          //height: 100%;
           display: flex;
           align-items: center;
           flex: 3;
+          gap: 5px;
           img {
-            width: 40px;
-            height: 40px;
+            width: 40px  ;
+            
+            height: 40px ;
             border-radius: 50%;
             object-fit: cover;
           }
 
           input {
-            border: none;
-            outline: none;
             padding: 20px 10px;
             background-color: transparent;
             width: 60%;
@@ -48,13 +49,19 @@
           }
 
           input[type="text"], textarea {
-            font-size:15px;
-          width: 100%;}
+            //height: 100%;
+            font-size:1.0625rem;
+          width: 87%;
+          resize: none;
+      border: none;
+    outline: none;
+  overflow: hidden;}
         }
         .right {
-          flex: 1;
+          flex: 0 0 auto;  // This will make the .right container size according to its content
           display: flex;
           justify-content: flex-end;
+          
           .file {
             width: 100px;
             height: 100px;

@@ -1,161 +1,125 @@
 @import "../../style.scss";
-.profile{
-    @include themify($themes){
-        background-color: themed("obg");
-        color:themed("tp");
-        
-        .images{
-            width: 100%;
-            height: 300px;
-            position: relative;
 
-            .cover{
-                margin-top: -8px;
-                width: 100%;
-                height: 100%;
-                @include mobile{
-                    width: 95%;
-                 }
+.profile {
+  @include themify($themes) {
+    background-color: themed("obg");
 
-                
-            }
+    .images {
+      width: 100%;
+      height: 300px;
+      position: relative;
 
-            .profilepic{
-                width: 200px;
-                height: 200px;
-                border-radius: 50%;
-                object-fit: cover;
-                position: absolute;
-                left: 0;
-                right: 0;
-                margin: auto;
-                top: 200px;
+      .cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-            }
-        }
- .profilecontainer{
-    @include boxshadow;
-    background-color: themed("bg");
-    border-radius: 10px;
-    margin: 10px;
-    padding:20px;
-
- }       
-.profileinfo{
-    display: flex;
-    justify-content: space-between;
-    height:150px;
-   align-items: end;
-   @include mobile{
-    flex-direction: column;
-    align-items: center;
-}
-
-.icon{
-    font-size: 25px;
-    color: themed("reverse");
-}
-
- @media(max-width:750px){
-    flex-direction: column;
-    align-items: center;
-}
-   
-    .left{
-display: flex;
-gap:5px;
-flex: 1;
-justify-content: center;
-
-@include mobile{
-   margin-top: 75px;
-}
-@media(max-width:750px){
-    margin-top: 75px;
-}
-
+      .profilePic {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 200px;
+      }
     }
+    .profileContainer {
+      padding: 20px 70px;
 
-    .middle{
-flex: 1;
-justify-content: center;
+      @include mobile{
+        padding: 10px;
+      }
+
+      @include tablet{
+        padding: 20px;
+      }
+
+      .uInfo {
+        height: 180px;
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        border-radius: 20px;
+        background-color: themed("bg");
+        color: themed("tp");
+        padding: 50px;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 10px;
+        justify-content: space-between;
+        margin-bottom: 20px;
 
         @include mobile{
-            margin-top: 15px;
-            gap:5px;
-         }
-         @media(max-width:750px){
-            margin-top: 15px;
-            gap:5px;
+          flex-direction: column;
+          height: 30vh;
+          padding: 20px;
+          margin-top: 100px;
         }
 
-        .top{
-display: flex;
-align-items: center;
-gap: 5px;
+        .left {
+          flex: 1;
+          display: flex;
+          gap: 10px;
 
-button{
-    padding: 4px 6px;
-    font-size:13px;
-    border-radius: 5px;
-    
-    border: none;
-    cursor: pointer;
-    background-color: themed("tp");
-                        color: themed("bg");
-                        &:hover{
-    
-                            background-color: themed("reverse");
-                            color: themed("main");
-                            @include boxshadow;
-                        
-                    }
+          @include tablet{
+            flex-wrap: wrap;
+          }
 
-}
-
-
+          a{
+            color: themed("ts");
+          }
         }
-        .buttom{
+
+        .center {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+
+          span {
+            font-size: 30px;
+            font-weight: 500;
+          }
+
+          .info {
+            width: 100%;
             display: flex;
-           
-            gap:5px;
+            align-items: center;
+            justify-content: space-around;
 
-        div{
-display: flex;
-align-items: center;
+            .item {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              color: themed("ts");
 
-
+              span {
+                font-size: 12px;
+              }
             }
+          }
+          button {
+            border: none;
+            background-color: #5271ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
         }
 
-
+        .right {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 10px;
+        }
+      }
     }
-
-    .right{
-flex: 1;
-align-items: center;
-justify-content: flex-end;
-display: flex;
-gap: 5px;
-    }
+  }
 }
-
-.desc{
-    @include mobile{
-        margin-top: 100px;
-        gap:5px;
-     }
-
-     @media(max-width:750px){
-        margin-top: 75px;
-        gap:5px;
-    }
-}
-
-
-
-}}

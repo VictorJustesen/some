@@ -42,6 +42,7 @@
                         color: themed("ts");
                         font-size: small;
                     }
+                
                 }
 
                 &:hover {
@@ -54,6 +55,12 @@
                         color: themed("ct");
                     }
                 }
+                
+            }
+            .delete{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
         }
 

@@ -37,6 +37,8 @@ const Share = () => {
     }
   );
 
+ 
+  
   const handleClick = async (e) => {
     e.preventDefault();
     let imgUrl = "";
@@ -46,18 +48,26 @@ const Share = () => {
     setFile(null);
   };
 
+  function autoResize(textarea) {
+    textarea.style.height = "auto";
+    textarea.style.height = (textarea.scrollHeight) + "px";
+  }
   return (
     <div className="share">
       <div className="container">
         <div className="top">
           <div className="left">
-            <img src={"/upload/" + currentUser.profilePic} alt="" />
-            <input
-              type="text"
-              placeholder={`What's on your mind ${currentUser.name}?`}
-              onChange={(e) => setDesc(e.target.value)}
-              value={desc}
-            />
+            <img src={"/upload/" + currentUser.profilepic} alt="" />
+            <textarea
+  placeholder={`What's on your mind ${currentUser.name}?`}
+  rows="1"
+  onChange={(e) => {
+    setDesc(e.target.value);
+    autoResize(e.target);
+  }}
+  value={desc}
+></textarea>
+
           </div>
           <div className="right">
             {file && (

@@ -10,24 +10,25 @@ import {Link} from "react-router-dom"
 
 const Leftbar = () => {
 
-
+  //const test = () => {console.log(currentUser)}
 
   const {currentUser} = useContext(AuthContext)
 
   return (
+   
     <div className='leftbar'>
 
     <div className='container'>
 
       <div className="menu">
-<Link to={`/profile/${currentUser.userId}`} style={{textDecoration: 'none'}}>
+<Link to={`/profile/${currentUser.id}`} style={{textDecoration: 'none'}}>
       <div className='user'>
- <img src="" alt="picture" className='userpic' />
+ <img src={"./upload/"+currentUser.profilepic} alt="picture" className='userpic' />
  <span>{currentUser.name}</span>
 </div>
 </Link>
 
-<div>
+<div >
 <PeopleIcon />
 <span>friends</span>
 </div>

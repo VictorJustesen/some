@@ -1,5 +1,5 @@
 import Login from "./pages/login/Login.jsx"
-import Home from "./pages/home/Home.jsx"
+import Home from "./pages/home/home.jsx"
 import Profile from "./pages/profile/Profile.jsx"
 import "./style.scss"
 import './App.css';
@@ -27,7 +27,7 @@ function App() {
   const queryClient = new QueryClient()
 
 
-const currentUser=useContext(AuthContext);
+const {currentUser}=useContext(AuthContext);
 
 const {darkMode} =useContext(DarkModeContext)
 
@@ -50,7 +50,7 @@ const {darkMode} =useContext(DarkModeContext)
   }
 
 const ProtectedRoute = ({children })=>{
-  if (!currentUser){
+  if (!currentUser ) {
     return <Navigate to="/login"/>
   }
   return children;
@@ -59,7 +59,9 @@ const ProtectedRoute = ({children })=>{
   const router = createBrowserRouter([
     {
       path: "/",
-      element:(<ProtectedRoute> <Layout/></ProtectedRoute>),
+      element:(<ProtectedRoute>
+         <Layout/>
+         </ProtectedRoute>),
       children:[
         {
           path: "/",

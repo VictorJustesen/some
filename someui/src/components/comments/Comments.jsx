@@ -1,57 +1,76 @@
-import "./comments.scss"
-import { AuthContext } from "../../context/authContext"
-import {useContext} from 'react'
+import "./comments.scss";
+import { AuthContext } from "../../context/authContext";
+import { useContext, useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
+import moment from "moment";
 
-const Comments = () => {
-const {currentUser} = useContext(AuthContext)
-    const comments =[{
-        id:1,
-        name:"john doe",
-        userId:1,
-        profilepic:"",
-        desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae.",
-        },
-        
-        {
-        id:2,
-        name:"john2",
-        userId:1,
-        profilepic:"",
-        desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae.",
-        },
+const Comments = ({ postid }) => {
+    const [desc, setDesc] = useState("")
+    const { currentUser } = useContext(AuthContext);
     
-        {
-            id:3,
-            name:"john3",
-            userId:1,
-            profilepic:"",
-            desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae.",
-            },
+    // Move the useQuery hook here instead of inside the comments function.
+    const { isLoading, error, data } = useQuery(["comments"], () =>
+        makeRequest.get("/comments?postid=" + postid).then((res) => {
+            return res.data;
+        })
+    );
+
+    const queryClient = useQueryClient();
+
+    const mutation = useMutation(
+      (newComment) => {
+        return makeRequest.post("/comments", newComment);
+      },
+      {
+        onSuccess: () => {
+          // Invalidate and refetch
+          queryClient.invalidateQueries(["comments"]);
+        },
+      }
+    );
+  
+   
     
-    ];
+    const handleClick = async (e) => {
+      e.preventDefault();
+      
+      mutation.mutate({ desc, postid });
+      setDesc("");
+     //console.log("./upload/"+currentUser)
+     
+
+    };
+  
+
     return (
         <div className="comments">
             <div className="write">
-            <img src={currentUser.profilepic} alt="picture"/>
-            <input type="text" placeholder="Write a comment" />
-            <button>Send</button>
+                <img src={"./upload/"+currentUser.profilepic} alt="picture" />
+                <input type="text"
+                 placeholder="Write a comment" 
+                 onChange={e=>setDesc(e.target.value)}
+                 value={desc} />
+                <button onClick={handleClick}>Send</button>
             </div>
-            {
-                comments.map(comment => (
+            {isLoading ? (
+                "loading"
+            ) : (
+                data.map(comment => (
                     <div key={comment.id} className="comment">
-                       
-                        <img src={comment.profilepic} alt="picture" />
-                        <div className="info"> 
-                        <span>{comment.name}</span>
-                        <p>{comment.desc}</p>
+                        <img src={"./upload/"+comment.profilepic} alt="picture" />
+                        <div className="info">
+                            <span>{comment.name}</span>
+                            <p>{comment.desc}</p>
                         </div>
-                        
-                        <span className="timeago">time ago </span>
+                        <span className="timeago">
+                            {moment(comment.createdat).fromNow()}
+                        </span>
                     </div>
                 ))
-            }
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default Comments
+export default Comments;
