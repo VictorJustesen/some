@@ -5,6 +5,7 @@
     color: themed("tp");
     margin-top: 0px ;
     padding: 20px;
+    min-height: 100vh;
 
     @include mobile{
         padding:10px;
