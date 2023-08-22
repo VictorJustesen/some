@@ -17,12 +17,17 @@ const login = async (inputs)=> {
 
 };
 
+const updateProfile = (updatedUserData) => {
+    const { data: userData } = updatedUserData;
+    setCurrentUser(userData);
+};
+
     useEffect(()=>{
         localStorage.setItem("user", JSON.stringify(currentUser));
     }, [currentUser]);
 
 return(
-    <AuthContext.Provider value={{currentUser,login}}>
+    <AuthContext.Provider value={{currentUser,login, updateProfile}}>
         {children}
         </AuthContext.Provider> 
 );

@@ -20,24 +20,42 @@ export const updateUser = (req, res) => {
   jwt.verify(token, "mussekey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    const q =
-      "UPDATE users SET `name`=?,`city`=?,`website`=?,`profilepic`=?,`coverpic`=? WHERE id=? ";
-
-    db.query(
-      q,
-      [
-        req.body.name,
-        req.body.city,
-        req.body.website,
-        req.body.coverpic,
-        req.body.profilepic,
-        userInfo.id,
-      ],
-      (err, data) => {
-        if (err) res.status(500).json(err);
-        if (data.affectedRows > 0) return res.json("Updated!");
-        return res.status(403).json("You can update only your post!");
+    const updatableFields = ["name", "city", "website", "profilepic", "coverpic", "twitter", "linkedin", "instagram", "facebook"];    const placeholders = [];
+    const values = [];
+    
+    updatableFields.forEach((field) => {
+      if (req.body[field] && req.body[field].trim().length > 0) {
+        placeholders.push(`\`${field}\`=?`);
+        values.push(req.body[field]);
       }
-    );
+    });
+
+    if (placeholders.length === 0) {
+      return res.status(400).json("No valid fields provided for update.");
+    }
+
+    const q = `UPDATE users SET ${placeholders.join(", ")} WHERE id=?`;
+    values.push(userInfo.id);
+
+    db.query(q, values, async (err, data) => {
+      if (err) return res.status(500).json(err);
+      if (!data || data.affectedRows === 0) return res.status(403).json("You can update only your post!");
+
+      // Fetch updated user info from the database
+      const fetchUserQ = "SELECT * FROM users WHERE id=?";
+      db.query(fetchUserQ, [userInfo.id], (err, updatedData) => {
+        if (err) return res.status(500).json(err);
+        if (updatedData.length === 0) return res.status(404).json("User not found after update");
+
+        // Create a new token with the updated user data
+        const updatedUserData = { ...updatedData[0] };
+        const newToken = jwt.sign(updatedUserData, "mussekey");
+
+        const {password, ...others} = updatedData[0];
+        res.cookie("accessToken", newToken, { httpOnly: true })
+           .status(200)
+           .json(others);
+      });
+    });
   });
 };

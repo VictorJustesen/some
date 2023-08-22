@@ -75,7 +75,7 @@ const Share = () => {
             )}
           </div>
         </div>
-        <hr />
+        
         <div className="bottom">
           <div className="left">
             <input

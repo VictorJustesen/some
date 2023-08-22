@@ -10,7 +10,7 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Posts from "../../components/posts/Posts";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
+import { makeRequest, } from "../../axios";
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
@@ -59,6 +59,12 @@ const Profile = () => {
     mutation.mutate(relationshipData.includes(currentUser.id));
   };
 
+  const logout = () => {
+    makeRequest.post('/auth/logout')
+    localStorage.removeItem("user");
+    window.location.reload();}
+
+
   return (
     
     <div className="profile">
@@ -66,65 +72,89 @@ const Profile = () => {
         "loading"
       ) : (
         <>
+          {openUpdate && <Update className="update" setOpenUpdate={setOpenUpdate} user={currentUser.id}/>}
           <div className="images">
             <img src={"/upload/"+data.coverpic} alt="" className="cover" />
             <img src={"/upload/"+data.profilepic} alt="" className="profilePic" />
           </div>
           <div className="profileContainer">
             <div className="uInfo">
-              <div className="left">
-                <a href="http://facebook.com">
-                  <FacebookTwoToneIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <InstagramIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <TwitterIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <LinkedInIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <PinterestIcon fontSize="large" />
-                </a>
-              </div>
+            <div className="left">
+    {data.facebook ? (
+        <a href={data.facebook}>
+            <FacebookTwoToneIcon fontSize="large" />
+        </a>
+    ) : null}
+
+    {data.instagram ? (
+        <a href={data.instagram}>
+            <InstagramIcon fontSize="large" />
+        </a>
+    ) : null}
+
+    {data.twitter ? (
+        <a href={data.twitter}>
+            <TwitterIcon fontSize="large" />
+        </a>
+    ) : null}
+
+    {data.linkedin ? (
+        <a href={data.linkedin}>
+            <LinkedInIcon fontSize="large" />
+        </a>
+    ) : null}
+
+    {!data.facebook && !data.instagram && !data.twitter && !data.linkedin ? (
+        <span>User has not added links.</span>
+    ) : null}
+</div>
               <div className="center">
                 <span>{data.name}</span>
                 <div className="info">
-                  <div className="item">
+                  <div className="item" >
                     <PlaceIcon />
                     <span>{data.city}</span>
                   </div>
-                  <div className="item">
-                    <LanguageIcon />
+                  <a className="item" href={`http://${data.website}`} style={{textDecoration: "none"}}>                    <LanguageIcon />
                     <span>{data.website}</span>
-                  </div>
+                  </a>
                 </div>
-                {rIsLoading ? (
+                
+              </div>
+              <div className="right">
+
+              {rIsLoading ? (
                   "loading"
                 ) : userid == currentUser.id ? (
-                  <button onClick={() => {
-                    setOpenUpdate(true);
-                    console.log('openUpdate value:', openUpdate);
-                 }}>update</button>
+                <div className="buttons">
+                    <button onClick={() => {
+                      setOpenUpdate(true);
+                    
+                   }}>update</button>
+                   <button className="logout" onClick={logout}>logout</button>
+                </div>
                 ) : (
                   <button onClick={handleFollow}>
                     {relationshipData.includes(currentUser.id)
                       ? "Following"
                       : "Follow"}
                   </button>
+                  
                 )}
-              </div>
-              <div className="right">
+
                 <EmailOutlinedIcon />
                 <MoreVertIcon />
+
+                
               </div>
-             {openUpdate && <Update setOpenUpdate={setOpenUpdate} user={currentUser.id}/>}
+              
+         
              
             </div>
-            <Posts userid={userid} />
+            <p>{data.desc}</p>
+            
           </div>
+          <Posts userid={userid} />
         </>
       )}
       

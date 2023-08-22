@@ -26,7 +26,7 @@
         width: 100%;
         border-bottom: 1px solid themed("cbg");
         padding-bottom: 5px;
-        
+        margin-bottom: 10px;
         .left {
           //height: 100%;
           display: flex;
@@ -53,9 +53,12 @@
             font-size:1.0625rem;
           width: 87%;
           resize: none;
-      border: none;
-    outline: none;
-  overflow: hidden;}
+          border: none;
+          outline: none;
+          overflow: hidden;
+          background-color: themed("bg");
+          color: themed("tp");
+}
         }
         .right {
           flex: 0 0 auto;  // This will make the .right container size according to its content
@@ -71,12 +74,7 @@
         }
       }
 
-      hr {
-        margin: 20px 0px;
-        border: none;
-        height: 0.5px;
-        background-color: themed("border");
-      }
+    
 
       .bottom {
         display: flex;

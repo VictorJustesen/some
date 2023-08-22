@@ -18,9 +18,10 @@
                 align-items: center;
 
                 img {
-                    width: 30px;
-                    height: 30px;
+                    width: 40px;
+                    height: 40px;
                     border-radius: 50%;
+                    object-fit: cover;
                 }
 
                 .userinfo {
@@ -71,6 +72,7 @@
 
             p {
                 margin-bottom: 20px;
+                color: themed("tp");
             }
 
             img {
@@ -98,6 +100,7 @@
                 margin-bottom: 5px;
                 flex-basis: 1 1 0px;
                 transition: background-color 0.1s ease-out;
+                color:themed("reverse");
             }
 
             .item:hover {

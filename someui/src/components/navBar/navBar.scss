@@ -12,7 +12,7 @@ position: sticky;
 top: 0;
 background-color: themed("bg");
 color: themed("tp");
-
+z-index: 1;
 .icon{
     background-color: themed("obg");
     padding: 8px;
@@ -90,6 +90,8 @@ gap: 20px;
     img{
         width: 40px !important;
         height: 40px !important;
+       
+
     }
 }
     }

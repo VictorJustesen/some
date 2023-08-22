@@ -23,7 +23,7 @@ const Leftbar = () => {
       <div className="menu">
 <Link to={`/profile/${currentUser.id}`} style={{textDecoration: 'none'}}>
       <div className='user'>
- <img src={"./upload/"+currentUser.profilepic} alt="picture" className='userpic' />
+ <img src={"/upload/"+currentUser.profilepic} alt="picture" className='userpic' />
  <span>{currentUser.name}</span>
 </div>
 </Link>

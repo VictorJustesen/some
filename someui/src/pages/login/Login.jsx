@@ -158,9 +158,9 @@ setRegisterError(err.response.data)
                         
                  <form>
                    <input type="text" placeholder="username" name="username" onChange={handleRegisterChange}/>
-                   <input type="email" placeholder="password"name="email" onChange={handleRegisterChange}/>
-                   <input type="password" placeholder="confirm password" name="password" onChange={handleRegisterChange}/>
-                   <input type="text" placeholder="confirm password" name="name" onChange={handleRegisterChange}/>
+                   <input type="text" placeholder="name" name="name" onChange={handleRegisterChange}/>
+                   <input type="email" placeholder="email"name="email" onChange={handleRegisterChange}/>
+                   <input type="password" placeholder="password" name="password" onChange={handleRegisterChange}/>
 {registerError && registerError}
                    <button onClick={handleSignUp}>Sign Up</button>
                  </form> 

@@ -66,7 +66,7 @@ const Post = ({post}) => {
       <div className="head">
     <div className="user">
     <Link to={`/profile/${post.userid}`}>
-    <img src={`/profile/${post.profilepic}`} alt="picture" />
+    <img src={`/upload/${post.profilepic}`} alt="picture" />
         </Link>
         
             <Link className="userinfo" to={`/profile/${post.userid}`}>
