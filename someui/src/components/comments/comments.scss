@@ -3,6 +3,9 @@
 .comments{
 @include themify($themes){
     margin-top: 10px;
+    padding-bottom: 10px;
+    
+   
     img{width: 40px;
     height: 40px;
 border-radius: 50%;
@@ -11,14 +14,18 @@ object-fit: cover;}
 .write{
     display: flex;
     gap: 20px;
-   
+   width: 100%;
+   border-radius: 5px;
 
     input[type="text"], textarea {
-        width: 65%;
+        width: 100%;
         border: 1px solid themed("obg");
         padding: 5px;
          background-color: themed("bg");
-         color: themed("tp");}
+         color: themed("tp");
+         border-radius: 5px;
+         font-size: 16px;
+        }
         
          input[type="text"], textarea:focus{
             outline: none;
@@ -58,5 +65,15 @@ font-size: smaller;
 color:themed("ts")
 }
 
+button{
+    border: none;
+    background-color: themed("reverse");
+    color: themed("main");
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+}
 
-}}
+}

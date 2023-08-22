@@ -28,10 +28,10 @@ const Leftbar = () => {
 </div>
 </Link>
 
-<div >
+<Link to={`/relationships/${currentUser.id}`} >
 <PeopleIcon />
 <span>friends</span>
-</div>
+</Link>
 
 <div>
 < BookmarkIcon/>

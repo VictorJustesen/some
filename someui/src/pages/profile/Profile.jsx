@@ -35,6 +35,7 @@ const Profile = () => {
     () =>
     
       makeRequest.get("/relationships?followeduserid=" + userid).then((res) => {
+        
         return res.data;
       })
   );
@@ -130,8 +131,8 @@ const Profile = () => {
                     <button onClick={() => {
                       setOpenUpdate(true);
                     
-                   }}>update</button>
-                   <button className="logout" onClick={logout}>logout</button>
+                   }}>Update</button>
+                   <button className="logout" onClick={logout}>Logout</button>
                 </div>
                 ) : (
                   <button onClick={handleFollow}>
@@ -154,7 +155,7 @@ const Profile = () => {
             <p>{data.desc}</p>
             
           </div>
-          <Posts userid={userid} />
+          <Posts key={userid} userid={userid} />
         </>
       )}
       

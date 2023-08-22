@@ -14,9 +14,8 @@ import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { makeRequest } from "../../axios"
 import { AuthContext } from '../../context/authContext';
 
-const Post = ({post}) => {
+const Post = ({ post, commentOpen, toggleComments }) => {
 
-    const [commentOpen, setCommentOpen]=useState(false)
     const[menuOpen,setMenuOpen]=useState(false)
     const {currentUser} = useContext(AuthContext)
    
@@ -55,7 +54,6 @@ const Post = ({post}) => {
     
       const handleLike = () => {
         mutation.mutate(data.includes(currentUser.id));
-       
       };
     
       const handleDelete = () => {
@@ -84,7 +82,7 @@ const Post = ({post}) => {
 
     <div className="content">
     <p>{post.desc}</p>
-        <img src={"./upload/"+post.img} alt="picture" />
+       {post.img &&  <img src={"./upload/"+post.img} alt="picture" />}
     
     </div>
     <div className="buttom">
@@ -104,12 +102,10 @@ const Post = ({post}) => {
        
          
    
-       <div className='item' onClick={() => setCommentOpen(!commentOpen)}>
-            <TextsmsOutlinedIcon  />
-       
-        
-            <span>Comments</span>
-       </div>
+<div className='item' onClick={toggleComments}>
+          <TextsmsOutlinedIcon />
+          <span>Comments</span>
+          </div>
         <div className='item'>
             <ShareOutlinedIcon/>
         
@@ -117,8 +113,11 @@ const Post = ({post}) => {
     
         </div>
         </div>
-    {commentOpen && <Comments postid={post.id}/>}
+         
+        {commentOpen && <Comments postid={post.id} />}
     </div>
+   
+    
   )
   }
 

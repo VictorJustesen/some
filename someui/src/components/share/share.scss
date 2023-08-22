@@ -77,28 +77,41 @@
     
 
       .bottom {
+        
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        .left {
-          display: flex;
+        display: flex;
           align-items: center;
-          gap: 20px;
+        justify-content: space-around;
+        width: 100%;
+        gap: 5px;
 
           .item {
+            
             display: flex;
             align-items: center;
             gap: 10px;
             cursor: pointer;
-
-            img {
-              height: 20px;
-            }
+            transition: background-color 0.1s ease-out;
+            justify-content: center;
+            border-radius: 5px;
+            flex: 1;
+            padding-top: 5px;
+                padding-bottom: 5px;
+            
 
             span {
               font-size: 12px;
               color: themed("ts");
             }
+
+            &:hover{
+              background-color: themed("obg");
+              transition-duration: 0s;
+              cursor: pointer;
+          }
+
+     
           }
 
           .item:hover{
@@ -106,9 +119,8 @@
               color: themed("reverse");
             }
           }
-        }
-        .right {
-            display: flex;
+        
+        
             
           button {
             width:50px;
@@ -116,11 +128,14 @@ margin-left: 10px;
             padding: 4px 6px;
             font-size:13px;
             border-radius: 5px;
-            
+            flex: 0.5;
             border: none;
             cursor: pointer;
             background-color: themed("tp");
             color: themed("bg");
+            padding-top: 5px;
+                padding-bottom: 5px;
+                font-size: 16px;
           }
 
 
@@ -129,7 +144,7 @@ margin-left: 10px;
             color: themed("main") !important;
             @include boxshadow;
         }
-        }
+        
       }
     }
   }

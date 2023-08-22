@@ -1,98 +1,142 @@
 @import '../../style.scss';
-.navbar{
-    @include themify($themes){
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-height: 49px;
-padding: 10px 20px;
-border-bottom: 1px solid grey;
-position: sticky;
-top: 0;
-background-color: themed("bg");
-color: themed("tp");
-z-index: 1;
-.icon{
-    background-color: themed("obg");
-    padding: 8px;
-    border-radius: 50%;
-    font-size: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-.icon:hover{
-color:themed("reverse");
-background-color: themed("cbg");
 
-}
-    .left{
-        display: flex;
-align-items: center;
-gap: 20px;
-Link {
-    width: 100px;
-    color: themed("reverse");
-    text-decoration: none;
+.navbar {
+  @include themify($themes) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 49px;
+    padding: 10px 20px;
+    border-bottom: 1px solid grey;
+    position: sticky;
+    top: 0;
+    background-color: themed("bg");
+    color: themed("tp");
+    z-index: 1;
 
-    &:hover {
-        font-weight: bold;
+    .icon {
+      background-color: themed("obg");
+      padding: 8px;
+      border-radius: 50%;
+      font-size: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        color: themed("reverse");
+        background-color: themed("cbg");
+      }
     }
-}
-        .search{
-            border-radius: 5px;
-            width: 300px;
-            display: flex;
-            align-items: center;
-            border: 1px solid themed("obg");
-            margin-right: 10px;
-            height: 30px;
-            padding: 1px;
-           
 
-            @media(max-width:750px){
-                width:22px;
-                border: none;
-                
-            }
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
 
-            input[type="text"], textarea {
-                font-size:15px;
-                @media(max-width:750px){
-                    display: none;
-                    
-                }
-               border: none;
-                background-color: themed("bg");
-                color: themed("tp");
-            width: 265px;
-              
-              }
-              input[type="text"], textarea:focus{
-                outline: none;
-              }
-            
+      Link {
+        width: 100px;
+        color: themed("reverse");
+        text-decoration: none;
+
+        &:hover {
+          font-weight: bold;
         }
-    }
+      }
 
-    .right{
+      .homelink {
+        color: themed("reverse");
+        text-decoration: none;
+      }
 
-                
-        @include mobile{
-                    display: none;
-                }
+      .search {
+        border-radius: 5px;
+        width: 300px;
         display: flex;
-align-items: center;
-gap: 20px;
+        align-items: center;
+        border: 1px solid themed("obg");
+        margin-right: 10px;
+        height: 30px;
+        padding: 1px;
 
-@include userHorizontal;
-.user{
-    img{
-        width: 40px !important;
-        height: 40px !important;
-       
+        @media(max-width: 750px) {
+          width: 22px;
+          border: none;
+        }
 
+        input[type="text"],
+        textarea {
+          font-size: 15px;
+          border: none;
+          background-color: themed("bg");
+          color: themed("tp");
+          width: 265px;
+
+          @media(max-width: 750px) {
+            display: none;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .searchResults {
+            max-height: 250px;
+            overflow-y: auto;
+            border: 1px solid themed("obg");
+            border-radius: 5px;
+            background-color: themed("bg");
+            position: absolute; 
+            top: 70px; 
+            left: 0;
+            right: 0;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        
+            .searchResultItem {
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transition: background-color 0.2s;
+        
+                &:hover {
+                    background-color: themed("cbg");
+                }
+        
+                img {
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                }
+        
+                span {
+                    color: themed("tp");
+                }
+            }
+        }
+
+
+      }
     }
+
+    .right {
+      @include mobile {
+        display: none;
+      }
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      @include userHorizontal;
+
+      .user {
+        img {
+          width: 40px !important;
+          height: 40px !important;
+        }
+      }
+    }
+  }
 }
-    }
-}}

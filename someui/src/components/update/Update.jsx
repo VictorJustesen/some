@@ -5,7 +5,7 @@ import {useState} from 'react'
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
 export const Update = ({setOpenUpdate, user}) => {
-  const { updateProfile } = useContext(AuthContext);
+  const { updateProfile, currentUser } = useContext(AuthContext);
   const [cover,setCover] = useState(null)
   const [profile,setProfile] = useState(null)
   const [inputs, setInputs] = useState({
@@ -15,7 +15,8 @@ export const Update = ({setOpenUpdate, user}) => {
     twitter: "",
     linkedin: "",
     instagram: "",
-    facebook: ""
+    facebook: "",
+    description: "" 
 });
 
   const handleChange= e => {
@@ -80,50 +81,61 @@ export const Update = ({setOpenUpdate, user}) => {
       <span>Update</span>
 
       <form action="">
-      <div className="input-group file">
+      <div className=" file">
     <span>Cover picture</span>
     <input type="file" onChange={e => setCover(e.target.files[0])} />
 </div>
 
-<div className="input-group file">
+<div className=" file">
     <span>Profile picture</span>
     <input type="file" onChange={e => setProfile(e.target.files[0])} />
 </div>
 
 <div className="input-group">
     <span>Name</span>
-    <input type="text" name="name" onChange={handleChange} />
+    <input type="text" name="name" placeholder={currentUser.name || 'your name'} onChange={handleChange} />
 </div>
 
 <div className="input-group">
     <span>Website</span>
-    <input type="text" name="website" onChange={handleChange} />
+    <input type="text" name="website" placeholder={currentUser.website || 'your website'} onChange={handleChange} />
 </div>
 
 <div className="input-group">
     <span>City</span>
-    <input type="text" name="city" onChange={handleChange} />
+    <input type="text" name="city" placeholder={currentUser.city || 'your current city'} onChange={handleChange} />
 </div>
 
 <div className="input-group">
     <span>Twitter</span>
-    <input type="text" name="twitter" placeholder="https://twitter.com/yourusername" onChange={handleChange} />
-</div>
+    <input type="text" name="twitter" placeholder={currentUser.twitter || 'link to your twitter profile'} onChange={handleChange} />
+    </div>
 
 <div className="input-group">
     <span>Facebook</span>
-    <input type="text" name="facebook" placeholder="https://facebook.com/yourusername" onChange={handleChange} />
+    <input type="text" name="facebook" placeholder={currentUser.facebook || 'link to your facebook profile'} onChange={handleChange} />
 </div>
 
 <div className="input-group">
     <span>LinkedIn</span>
-    <input type="text" name="linkedin" placeholder="https://linkedin.com/in/yourusername" onChange={handleChange} />
+    <input type="text" name="linkedin" placeholder={currentUser.linkedin || 'link to your linkedin profile'} onChange={handleChange} />
 </div>
 
 <div className="input-group">
     <span>Instagram</span>
-    <input type="text" name="instagram" placeholder="https://instagram.com/yourusername" onChange={handleChange} />
+    <input type="text" name="instagram" placeholder={currentUser.instagram || 'link to your instagram profile'} onChange={handleChange} />
 </div>
+
+<div className="input-group">
+                <span>Description</span>
+                <textarea
+                    name="description"
+                    placeholder="Tell us a bit about yourself..."
+                    value={inputs.description}
+                    onChange={handleChange}
+                    rows="4"  // Set the number of rows for the textarea (you can adjust this)
+                />
+            </div>
         
         <button className="submit" onClick={handleClick}>submit</button>
       </form>

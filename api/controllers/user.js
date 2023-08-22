@@ -59,3 +59,22 @@ export const updateUser = (req, res) => {
     });
   });
 };
+
+export const searchUsers = (req, res) => {
+  const query = req.params.query;
+  if (query.length === 0) return res.status(400).json("Search query is empty!");
+
+  // The SQL might differ based on the actual structure and columns you have in your 'users' table
+  const q = "SELECT * FROM users WHERE name LIKE ? LIMIT 5";
+
+  db.query(q, [`%${query}%`], (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (!data || data.length === 0) return res.status(404).json("No users found");
+
+    const users = data.map(user => {
+      const { password, ...info } = user; // Exclude the password from the returned data
+      return info;
+    });
+    return res.json(users);
+  });
+};
