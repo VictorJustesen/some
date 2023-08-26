@@ -2,22 +2,23 @@
 import './leftBar.scss'
 
 import PeopleIcon from '@mui/icons-material/People';
-import Diversity3Icon from '@mui/icons-material/Diversity3';
+import InfoIcon from '@mui/icons-material/Info';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { useContext } from 'react';
+import { useContext,useState } from 'react';
 import {AuthContext} from '../../context/authContext'
 import {Link} from "react-router-dom"
-
+import Info from "../info/Info"
 const Leftbar = () => {
 
   //const test = () => {console.log(currentUser)}
 
   const {currentUser} = useContext(AuthContext)
-
+  const [showInfo, setShowInfo] = useState(false);
+{console.log(showInfo)}
   return (
    
     <div className='leftbar'>
-
+      {showInfo &&  <Info onClose={() => setShowInfo(false)} /> }
     <div className='container'>
 
       <div className="menu">
@@ -28,22 +29,22 @@ const Leftbar = () => {
 </div>
 </Link>
 
-<Link to={`/relationships/${currentUser.id}`} >
+<div >
 <PeopleIcon />
 <span>friends</span>
-</Link>
-
-<div>
-< BookmarkIcon/>
-<span>saved</span>
-</div>
-
-<div>
-<Diversity3Icon />
-<span>groups</span>
 </div>
 
 
+
+<div onClick={()=>setShowInfo(!showInfo)}>
+<InfoIcon />
+<span>Info</span>
+</div>
+
+<a >
+<img src='/upload/1692684664030IMG_5516.JPG' />
+<span>Made By</span>
+</a>
 
 </div>
 

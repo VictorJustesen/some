@@ -72,7 +72,7 @@ const Comments = ({ postid }) => {
                 data.map(comment => (
                     <div key={comment.id} className="comment">
                         <img src={"/upload/"+comment.profilepic} alt="picture" />
-                        <div className="info">
+                        <div className="cinfo">
                             <span>{comment.name}</span>
                             <p>{comment.desc}</p>
                         </div>
@@ -82,7 +82,7 @@ const Comments = ({ postid }) => {
                                 {moment(comment.createdat).fromNow()}
 
                             </span>
-                            {console.log(comment.userid,currentUser.id)}
+                            {/*console.log(comment.userid,currentUser.id)*/}
                             {comment.userid==currentUser.id &&
                             <div className='delete'>
                              <MoreHorizIcon onClick={()=>setMenuOpen(!menuOpen)}/>

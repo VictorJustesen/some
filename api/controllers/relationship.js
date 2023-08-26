@@ -46,3 +46,21 @@ export const deleteRelationship = (req, res) => {
     });
   });
 };
+
+export const getFollowerCount = (req, res) => {
+  const q = "SELECT COUNT(*) as count FROM relationships WHERE followeduserid = ?";
+  
+  db.query(q, [req.query.userid], (err, data) => {
+    if (err) return res.status(500).json(err);
+    return res.status(200).json({ followers: data[0].count });
+  });
+};
+
+export const getFollowingCount = (req, res) => {
+  const q = "SELECT COUNT(*) as count FROM relationships WHERE followeruserid = ?";
+  
+  db.query(q, [req.query.userid], (err, data) => {
+    if (err) return res.status(500).json(err);
+    return res.status(200).json({ following: data[0].count });
+  });
+};

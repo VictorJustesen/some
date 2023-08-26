@@ -20,7 +20,7 @@ export const updateUser = (req, res) => {
   jwt.verify(token, "mussekey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    const updatableFields = ["name", "city", "website", "profilepic", "coverpic", "twitter", "linkedin", "instagram", "facebook"];    const placeholders = [];
+    const updatableFields = ["name", "city", "website", "profilepic", "coverpic", "twitter", "linkedin", "instagram", "facebook","description"];    const placeholders = [];
     const values = [];
     
     updatableFields.forEach((field) => {

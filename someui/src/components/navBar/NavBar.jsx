@@ -11,7 +11,8 @@ import { useState, useEffect,useContext } from 'react';
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios"; 
 import './navBar.scss'
-
+import Info from "../info/Info"
+import InfoIcon from '@mui/icons-material/Info';
 
 import {DarkModeContext} from  "../../context/darkModeContext"
 import {AuthContext} from '../../context/authContext'
@@ -19,6 +20,7 @@ import {AuthContext} from '../../context/authContext'
 
 
 const NavBar = () => {
+  const [showInfo, setShowInfo] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const { currentUser } = useContext(AuthContext);
@@ -49,15 +51,32 @@ const handleInputBlur = () => {
 
   return (
     <div className='navbar'>
+            {showInfo &&  <Info onClose={() => setShowInfo(false)} /> }
+
+
 <div className="left">
-<Link to="/" className="homelink" style={{textDecoration:"none"}}>
-    DevConnect
-</Link>
+  
+<div className='nstart'>
+  <Link to="/" className="homelink hometext" style={{textDecoration:"none"}}>
+      DevConnect
+  </Link>
+  
+  <a className="madeby" src="https://victorweb.tech">
+  <span>Made By</span>
+  <img src='/upload/1692684664030IMG_5516.JPG' />
+  
+  </a>
+</div>
+
 <Link to="/" className="homelink" style={{textDecoration:"none"}}><HomeOutlinedIcon className='icon homelink'/></Link>
 
 
 {darkMode ? <DarkModeOutlinedIcon className='icon' onClick={toggle}/> : <WbSunnyOutlinedIcon className='icon' onClick={toggle}/>}
+<InfoIcon className="icon "onClick={()=>setShowInfo(!showInfo)}/>
+
 <Link to={`/profile/${currentUser.id}`}  className="homelink" ><PersonOutlinedIcon className='icon homelink'/></Link>
+
+
 <div className="search">
     <SearchOutlinedIcon />
     <input 
@@ -83,12 +102,16 @@ const handleInputBlur = () => {
         </div>
     )}
 </div>
+
 </div>
 
 <div className="right">
 
-<EmailOutlinedIcon className='icon'/>
-<NotificationsOutlinedIcon className='icon'/>
+
+
+
+
+
 
 <Link to={`/profile/${currentUser.id}`} style={{textDecoration: 'none'}}>
 

@@ -77,29 +77,26 @@ const Share = () => {
         </div>
         
         <div className="bottom">
-          
+            
             <input
               type="file"
               id="file"
               style={{ display: "none" }}
               onChange={(e) => setFile(e.target.files[0])}
             />
-            
-              <div className="item">
-              <label htmlFor="file">
+              <label htmlFor="file" div className="item">
                 <PersonAddIcon style={{fontSize: 25}}/>
-                </label>
                 <span>Add Image</span>
-              </div>
+                </label>
            
-            <div className="item">
+            {/*<div className="item dosnt-work">
               <MapIcon style={{fontSize: 25}}/>
               <span>Add Place</span>
             </div>
-            <div className="item">
+            <div className="item dosnt-work">
               <AddPhotoAlternateIcon style={{fontSize: 25}}/>
               <span>Tag Friends</span>
-            </div>
+            </div>*/}
             <button onClick={handleClick}>Share</button>
           </div>
          

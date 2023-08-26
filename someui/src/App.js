@@ -38,11 +38,11 @@ const {darkMode} =useContext(DarkModeContext)
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <Navbar/>
         <div style={{display:"flex" }}>
-          <Leftbar/>
+{/*<LeftBar/>*/}
          <div style={{flex:6, marginTop:-10}}>
             <Outlet/>
          </div>
-            <RightBar/>
+            {/*<RightBar/>*/}
         </div>
       </div>
     </QueryClientProvider>

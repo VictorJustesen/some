@@ -74,7 +74,7 @@ const Post = ({ post, commentOpen, toggleComments }) => {
     
         </div>
         <div className='delete'>
-        <MoreHorizIcon onClick={()=>setMenuOpen(!menuOpen)}/>
+        {(currentUser.id==post.userid) && <MoreHorizIcon onClick={()=>setMenuOpen(!menuOpen)}/>}
         {menuOpen && <button onClick={handleDelete}>delete</button>}
         </div>
   </div>
@@ -106,12 +106,12 @@ const Post = ({ post, commentOpen, toggleComments }) => {
           <TextsmsOutlinedIcon />
           <span>Comments</span>
           </div>
-        <div className='item'>
+        {/*<div className='item dosnt-work'>
             <ShareOutlinedIcon/>
         
         <span>Share</span>
     
-        </div>
+        </div>*/}
         </div>
          
         {commentOpen && <Comments postid={post.id} />}

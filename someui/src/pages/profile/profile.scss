@@ -4,28 +4,35 @@
   @include themify($themes) {
     background-color: themed("obg");
     margin-top: 10px;
-position: relative;
-min-height: 100vh;
+min-height: 200vh;
+padding: 0px 80px;
+
+@include mobile{
+  padding:0px 10px;
+}
+@include tablet{
+  padding:0px 30px;
+}
+
     .update{
             
       position:absolute;
-      top: 5vh;
+      top: 10vh;
     
       left: 0;
-      right: 0;
+      right: -0vw;
       margin: auto;
      
      
       
      
-      z-index: 999;
+      z-index: 88;
     }
 
     .images {
       width: 100%;
       height: 300px;
       position: relative;
-
       .cover {
         width: 100%;
         height: 100%;
@@ -42,27 +49,27 @@ min-height: 100vh;
         right: 0;
         margin: auto;
         top: 200px;
+        z-index: 0;
       }
     }
     .profileContainer {
       
       height: 180px;
-      -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-      -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-      box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      @include boxshadow;
       border-radius: 20px;
       background-color: themed("bg");
       color: themed("tp");
       padding: 50px 20px;
       margin: 20px 10px;
       margin-top: 1px;
+      align-items: center;
       @include mobile{
         padding: 10px;
       }
 
       @include tablet{
         padding: 20px;
-        height: 270px;
+        height: 325px;
       }
 
       .uInfo {
@@ -72,12 +79,7 @@ min-height: 100vh;
         justify-content: space-between;
         
 
-        @include mobile{
-          flex-direction: column;
-          height: 30vh;
-          padding: 20px;
-          margin-top: 100px;
-        }
+      
 
         @include tablet{
           display: flex;
@@ -91,7 +93,7 @@ min-height: 100vh;
           gap: 10px;
 
           @include tablet{
-            
+            margin-top: 30px;
             flex-wrap: wrap;
           }
 
@@ -105,27 +107,39 @@ min-height: 100vh;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 20px;
-
+          gap: 10px;
+.followerCountData{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  span{
+    font-size: 14px;
+  }
+}
           span {
             font-size: 30px;
             font-weight: 500;
           }
 
-          .info {
+          .site {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-around;
-
+@include tablet{
+  gap: 40px;
+}
             .item {
               display: flex;
               align-items: center;
               gap: 5px;
               color: themed("ts");
 
+
+
               span {
-                font-size: 12px;
+                font-size: 14px;
               }
             }
           }

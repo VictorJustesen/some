@@ -14,6 +14,7 @@
     background-color: themed("bg");
     color: themed("tp");
     z-index: 1;
+    
 
     .icon {
       background-color: themed("obg");
@@ -33,7 +34,10 @@
       display: flex;
       align-items: center;
       gap: 20px;
-
+@include smalltablet{
+    align-self: center;
+    margin: auto;
+}
       Link {
         width: 100px;
         color: themed("reverse");
@@ -43,10 +47,23 @@
           font-weight: bold;
         }
       }
-
+      .nstart{
+        @include mobile{
+        display: none;
+        }
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
       .homelink {
         color: themed("reverse");
         text-decoration: none;
+      }
+
+      .hometext{
+        font-size: larger ;
+        font-weight: bold;
+        margin-top: -3px;
       }
 
       .search {
@@ -59,10 +76,11 @@
         height: 30px;
         padding: 1px;
 
-        @media(max-width: 750px) {
-          width: 22px;
-          border: none;
-        }
+        @include tablet {
+            border: none;
+            width: 20px;
+            margin-right: 10px;
+          }
 
         input[type="text"],
         textarea {
@@ -72,7 +90,7 @@
           color: themed("tp");
           width: 265px;
 
-          @media(max-width: 750px) {
+          @include tablet {
             display: none;
           }
 
@@ -119,10 +137,29 @@
 
 
       }
+
+      .madeby{
+
+        @include smalltablet{
+            display: none;
+        }
+        display: flex;
+        align-items: center;
+        gap: 5px;
+       margin-left: 0px;
+        cursor: pointer;
+        img{
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+
+        }
+      }
     }
 
     .right {
-      @include mobile {
+      @include smalltablet {
         display: none;
       }
       display: flex;

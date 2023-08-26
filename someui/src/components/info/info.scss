@@ -1,0 +1,66 @@
+@import '../../style.scss';
+
+.Info{
+
+    @include themify($themes){
+    position: absolute;
+    background-color: white;
+    @include boxshadow;
+    width: 250px;
+    height: 500px;
+    left:calc(50vw - 150px); //-half of width
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #1E1E1E; //bg black
+    border-radius: 10px;
+    z-index: 99;
+    margin: auto;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    top: calc(50vh - 250px);
+    background-color: themed("obg");
+    color:themed("tp");
+justify-content: space-between;
+img{
+    width: 100%;
+}
+    p {
+        margin-bottom: 20px;
+    }
+    .exit-button {
+        position: absolute;
+        right:15px;
+        top: 15px;
+        border: none;
+        background: transparent;
+        font-size: 30px;
+        cursor: pointer;
+        color: red;
+    }
+    
+    button {
+        margin: 5px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: themed("bg");
+        color: themed("tp");
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: themed("main");
+        }
+
+        &:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    }
+
+    .buttons{
+        display: flex;
+        justify-self: flex-end;
+    }
+}}

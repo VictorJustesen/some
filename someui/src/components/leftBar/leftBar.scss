@@ -5,13 +5,13 @@
         @include mobile{
             display: none;
         }
-
+user-select: none;
        
     position: sticky;
         top: 70px;
         height:calc(100vh - 70px);
         background-color: themed("bg");
-       
+       z-index: 1;
     .container{
         display: flex;
         align-items: flex-start;
@@ -24,20 +24,31 @@
             gap: 5px;
            border-bottom: 1px solid themed("cbg");
            @include userHorizontal;
-                
-                div{
+                .user{
+                    padding: 0;
+                }
+                div, a{
                     display: flex;
                 align-items: center;
                 gap: 5px;
                 padding:15px;
                 border-radius: 5px;
                 transition: background-color 0.1s ease-out;
+
+                img{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
                 }
-                div:hover{
+                &:hover{
                     background-color: themed("obg");
                     cursor: pointer;
                     transition-duration: 0s;
                 }
+                }
+
+               
         }
     }
 }}

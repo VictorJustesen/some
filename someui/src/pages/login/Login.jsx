@@ -3,6 +3,7 @@ import "./login.scss"
 import { AuthContext } from '../../context/authContext';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
+import Info from "../../components/infologin/Infologin"
 const Login = () => {
 
 
@@ -18,7 +19,7 @@ const Login = () => {
   });
 
 const [registerError,setRegisterError] = useState(false)
-
+const [showInfo, setShowInfo] = useState(true);
 
 const [loginInputs,setLoginInputs] = useState({
     username:"",
@@ -125,6 +126,7 @@ setRegisterError(err.response.data)
 
   return (
     <div className='container'>
+        { showInfo && <Info onClose={() => setShowInfo(false)} /> }
             <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1, backgroundColor: 'black' }} />
             <div className="card">
                 {!showRegister ? (

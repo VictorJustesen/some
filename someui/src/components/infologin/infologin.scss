@@ -1,0 +1,63 @@
+@import '../../style.scss';
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    padding: 10px;
+    @include boxshadow;
+    margin: auto;
+    z-index: 2;
+ background-color: rgba(255, 255, 255, 0.515);  
+ backdrop-filter: blur(5px);
+
+    
+    
+    border-radius: 10px;
+
+    .info-header {
+      
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .exit-button {
+        position: absolute;
+        right:15px;
+        top: 15px;
+        border: none;
+        background: transparent;
+        font-size: 30px;
+        cursor: pointer;
+        color: red;
+    }
+
+    h1, h2, p, span {
+        margin-bottom: 20px;
+    }
+
+    h1{
+        font-size: 36px;
+    }
+    h2{
+        font-size: 24px;
+    }
+    p {
+        font-size: 20px;
+        max-width: 50vw;
+    
+      
+    }
+
+    .author {
+        font-weight: bold;
+    }
+
+    .website-link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

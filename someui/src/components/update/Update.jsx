@@ -4,6 +4,7 @@ import { makeRequest } from "../../axios";
 import {useState} from 'react'
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
+import CloseIcon from '@mui/icons-material/Close';
 export const Update = ({setOpenUpdate, user}) => {
   const { updateProfile, currentUser } = useContext(AuthContext);
   const [cover,setCover] = useState(null)
@@ -82,12 +83,12 @@ export const Update = ({setOpenUpdate, user}) => {
 
       <form action="">
       <div className=" file">
-    <span>Cover picture</span>
+    <span>Cover picture: </span>
     <input type="file" onChange={e => setCover(e.target.files[0])} />
 </div>
 
 <div className=" file">
-    <span>Profile picture</span>
+    <span>Profile picture: </span>
     <input type="file" onChange={e => setProfile(e.target.files[0])} />
 </div>
 
@@ -129,6 +130,7 @@ export const Update = ({setOpenUpdate, user}) => {
 <div className="input-group">
                 <span>Description</span>
                 <textarea
+                className="descriptionf"
                     name="description"
                     placeholder="Tell us a bit about yourself..."
                     value={inputs.description}
@@ -140,7 +142,7 @@ export const Update = ({setOpenUpdate, user}) => {
         <button className="submit" onClick={handleClick}>submit</button>
       </form>
 
-      <button className="close" onClick={() => setOpenUpdate(false)}>X</button>
+      <CloseIcon className="close" onClick={() => setOpenUpdate(false)}/>
     </div>
     
   )

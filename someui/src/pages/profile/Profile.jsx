@@ -15,9 +15,10 @@ import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import Update from "../../components/update/Update";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Profile = () => {
+  
   const [openUpdate, setOpenUpdate] = useState(false);
   const { currentUser } = useContext(AuthContext);
 
@@ -56,15 +57,32 @@ const Profile = () => {
     }
   );
 
-  const handleFollow = () => {
-    mutation.mutate(relationshipData.includes(currentUser.id));
-  };
+const handleFollow = () => {
+  const isFollowing = relationshipData && relationshipData.includes(currentUser.id);
+
+  mutation.mutate(isFollowing, {
+      onSuccess: () => {
+          queryClient.refetchQueries(["followerCount"]);
+      },
+  });
+};
 
   const logout = () => {
     makeRequest.post('/auth/logout')
     localStorage.removeItem("user");
     window.location.reload();}
 
+    const { data: followerCountData } = useQuery(
+      ["followerCount"],
+      () => makeRequest.get("/relationships/followerscount?userid=" + userid)
+          .then(res => res.data.followers)
+  );
+
+  const { data: followingCountData } = useQuery(
+      ["followingCount"],
+      () => makeRequest.get("/relationships/followingcount?userid=" + userid)
+          .then(res => res.data.following)
+  );
 
   return (
     
@@ -111,16 +129,24 @@ const Profile = () => {
 </div>
               <div className="center">
                 <span>{data.name}</span>
-                <div className="info">
+                <div className="site">
                   <div className="item" >
                     <PlaceIcon />
                     <span>{data.city}</span>
                   </div>
-                  <a className="item" href={`http://${data.website}`} style={{textDecoration: "none"}}>                    <LanguageIcon />
+                  <a className="item" href={`http://${data.website}`} style={{textDecoration: "none"}}>  <LanguageIcon />
                     <span>{data.website}</span>
                   </a>
                 </div>
                 
+                <div className="followerCountData">
+                  <div className="item">
+                          <span>Followers: {followerCountData}</span>
+                      </div>
+                      <div className="item">
+                          <span>Following: {followingCountData}</span>
+                      </div>
+                </div>
               </div>
               <div className="right">
 
@@ -129,7 +155,7 @@ const Profile = () => {
                 ) : userid == currentUser.id ? (
                 <div className="buttons">
                     <button onClick={() => {
-                      setOpenUpdate(true);
+                      setOpenUpdate(!openUpdate);
                     
                    }}>Update</button>
                    <button className="logout" onClick={logout}>Logout</button>
@@ -143,8 +169,7 @@ const Profile = () => {
                   
                 )}
 
-                <EmailOutlinedIcon />
-                <MoreVertIcon />
+               
 
                 
               </div>
@@ -152,7 +177,7 @@ const Profile = () => {
          
              
             </div>
-            <p>{data.desc}</p>
+            <p>{data.description}</p>
             
           </div>
           <Posts key={userid} userid={userid} />
